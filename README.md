@@ -1,4 +1,4 @@
 TeAdmin
 =======
 
-A simple module extending ZfcUser, BjyAuthorize, Doctrine 2 with Sencha ExtJS user interface
+A simple admin module with Sencha ExtJs interface extending ZfcUser & BjyAuthorize (Doctrine 2)
