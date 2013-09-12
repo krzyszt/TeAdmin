@@ -12,5 +12,8 @@
  */
 
 return array(
-    // ...
+    // Remove this configuration once ZF 2.2.2 is released
+    'console' => array(
+      'router' => array(),
+    ),
 );
