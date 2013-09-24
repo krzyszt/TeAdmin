@@ -4,7 +4,13 @@ return array(
         'invokables' => array(
             'TeAdmin\Controller\Index' => 'TeAdmin\Controller\IndexController',
             'TeAdmin\Controller\User' => 'TeAdmin\Controller\UserController',
+            'TeAdmin\Controller\Role' => 'TeAdmin\Controller\RoleController',
         ),
+    ),
+    'controller_plugins' => array(
+        'invokables' => array(
+            'em' => 'TeAdmin\Controller\Plugin\EntityManagerPlugin',
+        )
     ),
     'router' => array(
         'routes' => array(
