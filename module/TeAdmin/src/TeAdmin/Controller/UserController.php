@@ -26,6 +26,21 @@ class UserController extends \ZfcUser\Controller\UserController {
         return $result;
         
     }
+    
+    public function listAction() {
+        $em = $this->em()->getEntityManager();
+        $query = $em->createQuery('SELECT u FROM TeAdmin\Entity\User u');
+        $dataArray = $query->getResult();
+        $data = array();
+        foreach ($dataArray as $object) {
+            $data[] = $object->getArrayCopy();
+        }
+        $result = new JsonModel(array(
+            'data' => $data,
+            'success' => true,
+        ));
+        return $result;
+    }
 
 }
 

@@ -99,4 +99,8 @@ class Role implements HierarchicalRoleInterface
     {
         $this->parent = $parent;
     }
+    
+    public function getArrayCopy() {
+        return get_object_vars($this);
+    }
 }

@@ -62,65 +62,17 @@ return array(
                 ),
                 'may_terminate' => true,
                 'child_routes' => array(
-                    'login' => array(
-                        'type' => 'Literal',
+                    'default' => array(
+                        'type' => 'Segment',
                         'options' => array(
-                            'route' => '/login',
+                            'route' => '/[:controller[/:action]]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
                             'defaults' => array(
-                                'controller' => 'TeAdmin\Controller\UserController',
-                                'action'     => 'login',
                             ),
                         ),
-                    ),
-                    'authenticate' => array(
-                        'type' => 'Literal',
-                        'options' => array(
-                            'route' => '/authenticate',
-                            'defaults' => array(
-                                'controller' => 'TeAdmin\Controller\UserController',
-                                'action'     => 'authenticate',
-                            ),
-                        ),
-                    ),
-                    'logout' => array(
-                        'type' => 'Literal',
-                        'options' => array(
-                            'route' => '/logout',
-                            'defaults' => array(
-                                'controller' => 'TeAdmin\Controller\UserController',
-                                'action'     => 'logout',
-                            ),
-                        ),
-                    ),
-                    'register' => array(
-                        'type' => 'Literal',
-                        'options' => array(
-                            'route' => '/register',
-                            'defaults' => array(
-                                'controller' => 'TeAdmin\Controller\UserController',
-                                'action'     => 'register',
-                            ),
-                        ),
-                    ),
-                    'changepassword' => array(
-                        'type' => 'Literal',
-                        'options' => array(
-                            'route' => '/change-password',
-                            'defaults' => array(
-                                'controller' => 'TeAdmin\Controller\UserController',
-                                'action'     => 'changepassword',
-                            ),
-                        ),                        
-                    ),
-                    'changeemail' => array(
-                        'type' => 'Literal',
-                        'options' => array(
-                            'route' => '/change-email',
-                            'defaults' => array(
-                                'controller' => 'TeAdmin\Controller\UserController',
-                                'action' => 'changeemail',
-                            ),
-                        ),                        
                     ),
                 ),
             ),
@@ -184,6 +136,16 @@ return array(
                 array(
                     'controller' => 'TeAdmin\Controller\User',
                     'action' => 'login',
+                    'roles' => array('guest','user','admin'),
+                ),
+                array(
+                    'controller' => 'TeAdmin\Controller\User',
+                    'action' => 'list',
+                    'roles' => array('guest','user','admin'),
+                ),
+                array(
+                    'controller' => 'TeAdmin\Controller\Role',
+                    'action' => 'list',
                     'roles' => array('guest','user','admin'),
                 ),
             ),

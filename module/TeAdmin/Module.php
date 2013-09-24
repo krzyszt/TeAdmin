@@ -1,10 +1,16 @@
 <?php
+
 namespace TeAdmin;
 
-class Module
-{
-    public function getAutoloaderConfig()
-    {
+use Zend\ModuleManager\ModuleManager;
+use Zend\Loader;
+use Zend\ModuleManager\Feature;
+use Zend\EventManager\EventInterface;
+
+class Module implements
+Feature\AutoloaderProviderInterface, Feature\ConfigProviderInterface, Feature\ServiceProviderInterface, Feature\BootstrapListenerInterface {
+
+    public function getAutoloaderConfig() {
         return array(
             'Zend\Loader\ClassMapAutoloader' => array(
                 __DIR__ . '/autoload_classmap.php',
@@ -17,8 +23,17 @@ class Module
         );
     }
 
-    public function getConfig()
-    {
+    public function getConfig() {
         return include __DIR__ . '/config/module.config.php';
     }
+    
+    public function getServiceConfig() {
+        return include __DIR__ . '/config/service.config.php';
+    }
+    
+    public function onBootstrap(EventInterface $e)
+    {
+        // Some logic to implement
+    }
+
 }

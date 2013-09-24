@@ -1,5 +1,4 @@
 <?php
-
 namespace TeAdmin\Controller\Plugin;
 
 use Zend\Mvc\Controller\Plugin\AbstractPlugin,
@@ -11,14 +10,25 @@ class EntityManagerPlugin extends AbstractPlugin {
      * @var Doctrine\ORM\EntityManager
      */
     protected $em;
-
+    
+    /**
+     * Set entityManager.
+     *
+     * @param EntityManager $em
+     */
     public function setEntityManager(EntityManager $em) {
-        $this->em = $em;
+//        $this->em = $em;
     }
 
+    /**
+     * Get entityManager.
+     *
+     * @return EntityManager
+     */
     public function getEntityManager() {
+       
         if (null === $this->em) {
-            $this->em = $this->getServiceLocator()->get('doctrine.entitymanager.orm_default');
+            $this->em = $this->getController()->getServiceLocator()->get('doctrine.entitymanager.orm_default');
         }
         return $this->em;
     }
